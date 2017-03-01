@@ -1,4 +1,5 @@
-require_relative 'sql_object'
+require_relative 'belongs_to_options'
+require_relative 'has_many_options'
 
 module Associatable
   def belongs_to(name, options = {})
@@ -63,8 +64,4 @@ module Associatable
   def assoc_options
     @assoc_options ||= {}
   end
-end
-
-class SQLObject
-  extend Associatable
 end

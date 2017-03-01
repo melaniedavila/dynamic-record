@@ -16,7 +16,3 @@ module Searchable
       .map { |datum| self.new(datum) }
   end
 end
-
-class SQLObject
-  extend Searchable
-end

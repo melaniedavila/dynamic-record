@@ -1,7 +1,12 @@
+require_relative 'associatable'
 require_relative 'db_connection'
+require_relative 'searchable'
 require 'active_support/inflector'
 
 class SQLObject
+  extend Searchable
+  extend Associatable
+
   def self.columns
     @columns ||= DBConnection.execute2(<<-SQL)
       SELECT
@@ -79,7 +84,7 @@ class SQLObject
   end
 
   def save
-    self.id.nil? ? self.insert : self.update
+    id.nil? ? insert : update
   end
 
   private
