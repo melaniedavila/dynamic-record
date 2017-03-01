@@ -50,3 +50,40 @@ def has_one_through(name, through_name, source_name)
   end
 end
 ```
+
+## Try It Out!
+
+1. Clone this repository
+1. Open `pry` in your terminal
+1. `load './dynamic_record_demo.rb'`
+1. Query the demo database as you please. Any changes made during the demo will not persist, as every demo starts with a fresh database. The demo database schema and association details are available below:
+
+### cookbooks
+
+| column name |
+|-------------|
+|id (primary key)|
+|title|
+
+### recipes
+
+| column name |
+|-------------|
+|id (primary key)|
+|name|
+|cookbook_id (foreign key)|
+
+### ingredients
+
+| column name |
+|-------------|
+|id (primary key)|
+|name|
+|recipe_id (foreign key)|
+
+**Demo Database Associations**
+- Cookbook has many recipes
+- Recipe has many ingredients
+- Recipe belongs to cookbook
+- Ingredient belongs to recipe
+- Ingredient has one cookbook through recipe
