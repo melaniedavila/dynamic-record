@@ -58,7 +58,7 @@ end
 1. `load './dynamic_record_demo.rb'`
 1. Query the demo database as you please. Any changes made during the demo will not persist, as every demo starts with a fresh database. The demo database schema and association details are available below:
 
-### Not sure where to start? Try these queries:
+**Not sure where to start? Try these queries:**
 - Cookbook.all
 - Cookbook.all.first.recipes
 - Recipe.all
