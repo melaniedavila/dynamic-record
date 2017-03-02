@@ -1,6 +1,6 @@
 # DynamicRecord
 
-DynamicRecord is a lightweight Ruby object relational mapping (ORM) library inspired by Ruby on Rails' ActiveRecord. It was built using meta-programming techniques as well as the ActiveSupport::Inflector library. The ORM allows you to seamlessly perform database operations without writing SQL code.
+DynamicRecord is a lightweight Ruby object relational mapping (ORM) library. It was built using meta-programming techniques as well as the ActiveSupport::Inflector library. The ORM allows you to seamlessly perform database operations without writing SQL code.
 
 DynamicRecord establishes and relies upon naming conventions to create associations between database tables.
 
@@ -58,14 +58,17 @@ end
 1. `load './dynamic_record_demo.rb'`
 1. Query the demo database as you please. Any changes made during the demo will not persist, as every demo starts with a fresh database. The demo database schema and association details are available below:
 
-### cookbooks
+
+## Schema
+
+#### cookbooks
 
 | column name |
 |-------------|
 |id (primary key)|
 |title|
 
-### recipes
+#### recipes
 
 | column name |
 |-------------|
@@ -73,7 +76,7 @@ end
 |name|
 |cookbook_id (foreign key)|
 
-### ingredients
+#### ingredients
 
 | column name |
 |-------------|
@@ -81,7 +84,7 @@ end
 |name|
 |recipe_id (foreign key)|
 
-**Demo Database Associations**
+##Demo Database Associations
 - Cookbook has many recipes
 - Recipe has many ingredients
 - Recipe belongs to cookbook
