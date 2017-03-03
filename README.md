@@ -64,8 +64,10 @@ end
 - Recipe.all
 - Recipe.all.last.ingredients
 - Recipe.all.last.cookbook
+- Recipe.find(2)
 - Ingredient.all.first.recipe
 - Ingredient.all.first.cookbook
+- Ingredient.where(recipe_id: 3)
 
 ### cookbooks
 
