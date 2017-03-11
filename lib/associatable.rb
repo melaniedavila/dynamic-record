@@ -25,7 +25,9 @@ module Associatable
     end
   end
 
-  def has_one_through(name, through_name, source_name)
+  def has_one_through(name, through_name, source_name = nil)
+    source_name ||= name
+
     define_method(name) do
       through_options = self.class.assoc_options[through_name]
       source_options = through_options.model_class.assoc_options[source_name]
