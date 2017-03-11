@@ -53,21 +53,16 @@ end
 
 ## Try It Out!
 
-1. Clone this repository
-1. Open `pry` in your terminal
-1. `load './dynamic_record_demo.rb'`
-1. Query the demo database as you please. Any changes made during the demo will not persist, as every demo starts with a fresh database. The demo database schema and association details are available below:
+1. Clone this repository and `cd` to it.
+1. Run `bundle install`.
+1. Load a demo:
+    - Run `bundle exec ruby cookbooks.rb`.
+    - Run `bundle exec ruby universities.rb`.
+    - Create your own! Follow the example given by `universities.rb`. You'll need to create a `.sql` file and a `.rb` file.
+1. To avoid printing queries, pass `PRINT_QUERIES=false` to the demo command, e.g., `PRINT_QUERIES=false bundle exec ruby cookbooks.rb`
+1. Query the demo database as you please. Any changes made during the demo will not persist, as every demo starts with a fresh database. The cookbooks demo database schema and association details are available below:
 
-**Not sure where to start? Try these queries:**
-- Cookbook.all
-- Cookbook.all.first.recipes
-- Recipe.all
-- Recipe.all.last.ingredients
-- Recipe.all.last.cookbook
-- Recipe.find(2)
-- Ingredient.all.first.recipe
-- Ingredient.all.first.cookbook
-- Ingredient.where(recipe_id: 3)
+**Cookbook Database Schema**
 
 ### cookbooks
 
@@ -92,7 +87,8 @@ end
 |name|
 |recipe_id (foreign key)|
 
-**Demo Database Associations**
+**Cookbook Database Associations**
+
 - Cookbook has many recipes
 - Recipe has many ingredients
 - Recipe belongs to cookbook
