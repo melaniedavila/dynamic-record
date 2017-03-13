@@ -56,10 +56,10 @@ end
 1. Clone this repository and `cd` to it.
 1. Run `bundle install`.
 1. Load a demo:
-    - Run `bundle exec ruby cookbooks.rb`.
-    - Run `bundle exec ruby universities.rb`.
-    - Create your own! Follow the example given by `universities.rb`. You'll need to create a `.sql` file and a `.rb` file.
-1. To avoid printing queries, pass `PRINT_QUERIES=false` to the demo command, e.g., `PRINT_QUERIES=false bundle exec ruby cookbooks.rb`
+    - Run `bundle exec ruby cookbooks_demo.rb`.
+    - Run `bundle exec ruby universities_demo.rb`.
+    - Create your own! Follow the example given by `universities_demo.rb`. You'll need to create a `.sql` file and a `.rb` file.
+1. To avoid printing queries, pass `PRINT_QUERIES=false` to the demo command, e.g., `PRINT_QUERIES=false bundle exec ruby cookbooks_demo.rb`
 1. Query the demo database as you please. Any changes made during the demo will not persist, as every demo starts with a fresh database. The cookbooks demo database schema and association details are available below:
 
 **Cookbook Database Schema**
