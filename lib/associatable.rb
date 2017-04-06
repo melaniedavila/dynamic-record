@@ -2,17 +2,23 @@ require_relative 'belongs_to_options'
 require_relative 'has_many_options'
 
 module Associatable
+  # defines a method 'name' that will return an object with the class type
+  # associated with name
   def belongs_to(name, options = {})
+    # sets a key of name, pointing to a BelongsToOptions object
     self.assoc_options[name] = BelongsToOptions.new(name, options)
     define_method(name) do
       options = self.class.assoc_options[name]
       primary_key = options.primary_key
       foreign_key_val = self.send(options.foreign_key)
       target_model_class = options.model_class
+      # will return an object with the class type associated with name
       target_model_class.where(primary_key => foreign_key_val).first
     end
   end
 
+  # defines a method 'name' that will return an array of objects with the
+  # class type associated with name
   def has_many(name, options = {})
     self_class_name = self.name
     self.assoc_options[name] = HasManyOptions.new(name, self_class_name, options)
@@ -28,6 +34,8 @@ module Associatable
   def has_one_through(name, through_name, source_name = nil)
     source_name ||= name
 
+    # must define through and source_options inside in order to ensure both
+    # source and through classes are defined at time of method invocation
     define_method(name) do
       through_options = self.class.assoc_options[through_name]
       source_options = through_options.model_class.assoc_options[source_name]
