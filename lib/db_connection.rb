@@ -36,14 +36,18 @@ class DBConnection
 
   def self.execute(*args)
     print_query(*args)
+    # executes the given SQL statement
     instance.execute(*args)
   end
 
   def self.execute2(*args)
     print_query(*args)
+    # similar to execute, exexute2 executes the given SQL statement; however,
+    # the first row returned is always the names of the columns
     instance.execute2(*args)
   end
 
+  # obtains the unique row id of the next row to be inserted in the database
   def self.last_insert_row_id
     instance.last_insert_row_id
   end
