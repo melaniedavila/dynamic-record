@@ -27,6 +27,7 @@ class SQLObject
   # to add getter and setter methods
   def self.finalize!
     self.columns.each do |col|
+      # define_method defines an instance method in the receiver
       define_method(col) { self.attributes[col] }
 
       define_method("#{col}=") { |val| self.attributes[col] = val }
@@ -76,6 +77,7 @@ class SQLObject
   end
 
   def initialize(params = {})
+    # Sets each attribute on the object
     params.each do |attr_name, attr_val|
       if self.class.columns.include?(attr_name.to_sym)
         self.send("#{attr_name}=", attr_val)
@@ -107,12 +109,11 @@ class SQLObject
       cols = self.class.columns.drop(1).map(&:to_s)
       col_names = cols.join(", ")
       question_marks = (["?"] * (cols.count)).join(", ")
-
       DBConnection.execute(<<-SQL, *attribute_values.drop(1))
-      INSERT INTO
-        #{self.class.table_name} (#{col_names})
-      VALUES
-        (#{question_marks})
+        INSERT INTO
+          #{self.class.table_name} (#{col_names})
+        VALUES
+          (#{question_marks})
       SQL
 
       self.id = DBConnection.last_insert_row_id
